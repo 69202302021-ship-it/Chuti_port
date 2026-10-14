@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chutikan Supromin | Academic Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Prompt & Sarabun -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        prompt: ['Prompt', 'sans-serif'],
+                        sarabun: ['Sarabun', 'sans-serif'],
+                    },
+                    colors: {
+                        skybrand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-slow': 'float 10s ease-in-out infinite',
+                        'pulse-subtle': 'pulseSubtle 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        },
+                        pulseSubtle: {
+                            '0%, 100%': { opacity: 0.8, transform: 'scale(1)' },
+                            '50%': { opacity: 1, transform: 'scale(1.03)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 40%, #f8fafc 100%);
+            color: #1e293b;
+        }
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: 'Prompt', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(224, 242, 254, 0.8);
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .sky-gradient-text {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 50%, #0284c7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .sky-btn-gradient {
+            background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+        }
+        .sky-btn-gradient:hover {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f0f9ff;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #bae6fd;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #38bdf8;
+        }
+    </style>
+</head>
+<body class="min-h-screen relative overflow-x-hidden selection:bg-sky-200 selection:text-sky-900">
+
+    <!-- Soft Decorative Sky Orbs -->
+    <div class="fixed top-[-10%] left-[-10%] w-[500px] h-[500px] bg-sky-200/40 rounded-full blur-3xl pointer-events-none animate-float-slow"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-sky-100/60 rounded-full blur-3xl pointer-events-none animate-float"></div>
+    <div class="fixed top-[40%] right-[15%] w-[350px] h-[350px] bg-blue-100/30 rounded-full blur-2xl pointer-events-none"></div>
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 transition-all duration-300" id="navbar">
+        <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <div class="glass-nav rounded-2xl shadow-sm border border-sky-100/80 px-4 py-2.5 flex items-center justify-between">
+                <!-- Logo / Brand -->
+                <a href="#hero" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl sky-btn-gradient flex items-center justify-center text-white font-bold text-lg shadow-md group-hover:scale-105 transition-transform">
+                        CS
+                    </div>
+                    <div>
+                        <span class="font-heading font-semibold text-gray-800 text-base sm:text-lg block leading-tight group-hover:text-sky-600 transition-colors">
+                            ชุติกาญจน์ สุพรหมอินทร์
+                        </span>
+                        <span class="text-xs text-sky-600 font-medium tracking-wide block">
+                            Academic Portfolio
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-1 lg:gap-2 text-sm font-medium text-slate-600">
+                    <a href="#about" class="px-3.5 py-1.5 rounded-lg hover:text-sky-600 hover:bg-sky-50 transition-all">ประวัติส่วนตัว</a>
+                    <a href="#education" class="px-3.5 py-1.5 rounded-lg hover:text-sky-600 hover:bg-sky-50 transition-all">ประวัติการศึกษา</a>
+                    <a href="#skills" class="px-3.5 py-1.5 rounded-lg hover:text-sky-600 hover:bg-sky-50 transition-all">ทักษะ & ความสามารถ</a>
+                    <a href="#family" class="px-3.5 py-1.5 rounded-lg hover:text-sky-600 hover:bg-sky-50 transition-all">ครอบครัว</a>
+                    <a href="#contact" class="px-4 py-1.5 rounded-xl sky-btn-gradient text-white shadow-sm hover:shadow transition-all text-xs font-semibold">ติดต่อ</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-xl text-slate-600 hover:bg-sky-50 transition-colors" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation Drawer -->
+            <div id="mobile-menu" class="hidden md:hidden mt-2 glass-card rounded-2xl p-4 border border-sky-100 shadow-xl transition-all">
+                <div class="flex flex-col gap-2 text-sm font-medium text-slate-700">
+                    <a href="#about" class="px-4 py-2.5 rounded-xl hover:bg-sky-50 hover:text-sky-600 transition-colors flex items-center gap-3">
+                        <i class="fa-solid fa-user text-sky-500 w-5"></i> ประวัติส่วนตัว
+                    </a>
+                    <a href="#education" class="px-4 py-2.5 rounded-xl hover:bg-sky-50 hover:text-sky-600 transition-colors flex items-center gap-3">
+                        <i class="fa-solid fa-graduation-cap text-sky-500 w-5"></i> ประวัติการศึกษา
+                    </a>
+                    <a href="#skills" class="px-4 py-2.5 rounded-xl hover:bg-sky-50 hover:text-sky-600 transition-colors flex items-center gap-3">
+                        <i class="fa-solid fa-star text-sky-500 w-5"></i> ทักษะ & ความสามารถ
+                    </a>
+                    <a href="#family" class="px-4 py-2.5 rounded-xl hover:bg-sky-50 hover:text-sky-600 transition-colors flex items-center gap-3">
+                        <i class="fa-solid fa-users text-sky-500 w-5"></i> ข้อมูลครอบครัว
+                    </a>
+                    <a href="#contact" class="px-4 py-2.5 rounded-xl bg-sky-500 text-white font-semibold text-center mt-2 shadow-sm">
+                        <i class="fa-solid fa-paper-plane mr-2"></i> ช่องทางการติดต่อ
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-16 space-y-16">
+
+        <!-- Hero Section -->
+        <section id="hero" class="pt-4 lg:pt-8">
+            <div class="glass-card rounded-3xl p-6 sm:p-10 shadow-xl shadow-sky-100/50 relative overflow-hidden">
+                <!-- Background decorative accent -->
+                <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-sky-200/40 rounded-full blur-2xl pointer-events-none"></div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                    <!-- Left Column: Avatar Profile -->
+                    <div class="lg:col-span-5 flex flex-col items-center justify-center">
+                        <div class="relative group">
+                            <!-- Glow Ring -->
+                            <div class="absolute -inset-1.5 sky-btn-gradient rounded-3xl blur opacity-75 group-hover:opacity-100 transition duration-500"></div>
+                            
+                            <!-- Image Frame -->
+                            <div class="relative rounded-2xl overflow-hidden w-64 h-80 sm:w-72 sm:h-96 shadow-xl border-4 border-white bg-slate-100 flex items-center justify-center">
+                                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop" 
+                                     alt="ชุติกาญจน์ สุพรหมอินทร์" 
+                                     class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                                     id="profile-img-element"
+                                     onerror="this.onerror=null; this.src='https://placehold.co/600x800/e0f2fe/0284c7?text=Chutikan+Supromin';"
+                                />
+                                <!-- Badge inside photo -->
+                                <div class="absolute bottom-3 left-3 right-3 glass-card rounded-xl p-2.5 text-center backdrop-blur-md bg-white/80 border border-white/60 shadow-md">
+                                    <span class="text-xs font-heading font-semibold text-sky-800 block">อ๋อมแอ๋ม (Aomaem)</span>
+                                    <span class="text-[11px] text-slate-500">นักเรียนแผนวิทยาศาสตร์-คณิตศาสตร์</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-3 flex items-center gap-1.5">
+                            <i class="fa-solid fa-circle-info text-sky-400"></i> คลิกเพื่อดูภาพขยาย
+                        </p>
+                    </div>
+
+                    <!-- Right Column: Personal Branding Info -->
+                    <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
+                        <!-- Student Tag -->
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-100/80 border border-sky-200 text-sky-800 text-xs font-semibold">
+                            <span class="w-2 h-2 rounded-full bg-sky-500 animate-ping"></span>
+                            <span>นักเรียนระดับชั้นมัธยมศึกษาปีที่ 6</span>
+                            <span class="text-sky-300">•</span>
+                            <span>โรงเรียนเลยพิทยาคม</span>
+                        </div>
+
+                        <!-- Main Title & Name -->
+                        <div>
+                            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold font-heading text-slate-800 tracking-tight leading-tight">
+                                ชุติกาญจน์ สุพรหมอินทร์
+                            </h1>
+                            <p class="text-lg sm:text-xl font-heading font-medium text-sky-600 mt-1">
+                                CHUTIKAN SUPROMIN
+                            </p>
+                        </div>
+
+                        <!-- Motto Card -->
+                        <div class="p-4 rounded-2xl bg-gradient-to-r from-sky-50 to-blue-50/50 border border-sky-100 shadow-inner">
+                            <div class="flex items-start gap-3">
+                                <i class="fa-solid fa-quote-left text-sky-400 text-xl mt-0.5"></i>
+                                <div>
+                                    <p class="text-sm sm:text-base font-medium text-slate-700 italic">
+                                        "ไม่มีความสำเร็จไหน ที่ไม่ใช้ความพยายาม"
+                                    </p>
+                                    <span class="text-xs text-sky-600 font-semibold block mt-1">— คติประจำใจ (Motto)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Brief Highlights Grid -->
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+                            <div class="p-3 rounded-xl bg-white/70 border border-sky-100 text-center sm:text-left">
+                                <span class="text-xs text-slate-500 block">แผนการเรียน</span>
+                                <span class="text-sm font-semibold text-slate-800 font-heading">วิทย์ - คณิต</span>
+                            </div>
+                            <div class="p-3 rounded-xl bg-white/70 border border-sky-100 text-center sm:text-left">
+                                <span class="text-xs text-slate-500 block">อายุ</span>
+                                <span class="text-sm font-semibold text-slate-800 font-heading">18 ปี</span>
+                            </div>
+                            <div class="p-3 rounded-xl bg-white/70 border border-sky-100 text-center sm:text-left col-span-2 sm:col-span-1">
+                                <span class="text-xs text-slate-500 block">จังหวัด</span>
+                                <span class="text-sm font-semibold text-slate-800 font-heading">เลย (Loei)</span>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-3">
+                            <a href="#about" class="px-6 py-3 rounded-xl sky-btn-gradient text-white font-medium text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all flex items-center gap-2">
+                                <i class="fa-solid fa-user-check"></i>
+                                <span>ดูประวัติส่วนตัว</span>
+                            </a>
+                            <a href="#contact" class="px-6 py-3 rounded-xl bg-white border border-sky-200 text-sky-700 font-medium text-sm shadow-sm hover:bg-sky-50 transition-all flex items-center gap-2">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                <span>ติดต่ออ๋อมแอ๋ม</span>
+                            </a>
+                            <button onclick="window.print()" class="p-3 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors text-sm" title="พิมพ์ประวัติ">
+                                <i class="fa-solid fa-print"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Personal Profile Section -->
+        <section id="about" class="scroll-mt-24">
+            <div class="text-center max-w-2xl mx-auto mb-8">
+                <span class="text-xs font-semibold text-sky-600 tracking-wider uppercase bg-sky-100 px-3 py-1 rounded-full">
+                    PERSONAL INFORMATION
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-bold font-heading text-slate-800 mt-2">
+                    ประวัติส่วนตัว (Profile)
+                </h2>
+                <div class="w-12 h-1 bg-sky-400 mx-auto rounded-full mt-2"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Info Card 1: General Info -->
+                <div class="glass-card rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-id-card"></i>
+                        </div>
+                        <h3 class="font-heading font-semibold text-lg text-slate-800">ข้อมูลทั่วไป</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li class="flex justify-between pb-2 border-b border-sky-50">
+                            <span class="text-slate-400">ชื่อ-นามสกุล (TH)</span>
+                            <span class="font-medium text-slate-800">ชุติกาญจน์ สุพรหมอินทร์</span>
+                        </li>
+                        <li class="flex justify-between pb-2 border-b border-sky-50">
+                            <span class="text-slate-400">ชื่อ-นามสกุล (EN)</span>
+                            <span class="font-medium text-slate-800">CHUTIKAN SUPROMIN</span>
+                        </li>
+                        <li class="flex justify-between pb-2 border-b border-sky-50">
+                            <span class="text-slate-400">ชื่อเล่น</span>
+                            <span class="font-medium text-sky-600">อ๋อมแอ๋ม (AOMAEM)</span>
+                        </li>
+                        <li class="flex justify-between pb-2 border-b border-sky-50">
+                            <span class="text-slate-400">วัน/เดือน/ปีเกิด</span>
+                            <span class="font-medium text-slate-800">19 ตุลาคม 2550</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span class="text-slate-400">อายุ</span>
+                            <span class="font-medium text-slate-800">18 ปี</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Info Card 2: Physical & Demographics -->
+                <div class="glass-card rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                        </div>
+                        <h3 class="font-heading font-semibold text-lg text-slate-800">ข้อมูลกายภาพ & สัญชาติ</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li class="flex justify-between pb-2 border-b border-sky-50">
+                            <span class="text-slate-400">หมู่เลือด</span>
+                            <span class="font-semibold text-rose-500 bg-rose-50 px-2 py-0.5 rounded-md">กรุ๊ป A</span>
+                        </li>
+                        <li class="flex justify-between pb-2 border-b border-sky-50">
+                            <span class="text-slate-400">ส่วนสูง</span>
+                            <span class="font-medium text-slate-800">170 ซม. (cm)</span>
+                        </li>
+                        <li class="flex justify-between pb-2 border-b border-sky-50">
+                            <span class="text-slate-400">น้ำหนัก</span>
+                            <span class="font-medium text-slate-800">52 กก. (kg)</span>
+                        </li>
+                        <li class="flex justify-between pb-2 border-b border-sky-50">
+                            <span class="text-slate-400">สัญชาติ / เชื้อชาติ</span>
+                            <span class="font-medium text-slate-800">ไทย / ไทย</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span class="text-slate-400">ศาสนา</span>
+                            <span class="font-medium text-slate-800">พุทธ</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Info Card 3: Address & Residence -->
+                <div class="glass-card rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <h3 class="font-heading font-semibold text-lg text-slate-800">ที่อยู่ปัจจุบัน</h3>
+                    </div>
+                    <div class="space-y-3 text-sm text-slate-600">
+                        <p class="leading-relaxed bg-sky-50/50 p-3 rounded-xl border border-sky-100">
+                            <i class="fa-solid fa-house-chimney text-sky-500 mr-2"></i>
+                            177 หมู่ 7 ต.กก อ.เมืองเลย จ.เลย
+                        </p>
+                        <div class="space-y-2 pt-2">
+                            <div class="flex items-center justify-between text-xs text-slate-500">
+                                <span>แผนการเรียนปัจจุบัน</span>
+                                <span class="font-semibold text-sky-600 bg-sky-100 px-2.5 py-1 rounded-md">วิทยาศาสตร์ - คณิตศาสตร์</span>
+                            </div>
+                            <div class="flex items-center justify-between text-xs text-slate-500">
+                                <span>สถาบันการศึกษา</span>
+                                <span class="font-semibold text-slate-700">โรงเรียนเลยพิทยาคม</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education History Section -->
+        <section id="education" class="scroll-mt-24">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-xs font-semibold text-sky-600 tracking-wider uppercase bg-sky-100 px-3 py-1 rounded-full">
+                    EDUCATION JOURNEY
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-bold font-heading text-slate-800 mt-2">
+                    ประวัติด้านการศึกษา
+                </h2>
+                <p class="text-sm text-slate-500 mt-1">เส้นทางการเรียนรู้ตั้งระดับชั้นอนุบาลถึงมัธยมศึกษาตอนปลาย</p>
+                <div class="w-12 h-1 bg-sky-400 mx-auto rounded-full mt-2"></div>
+            </div>
+
+            <!-- Timeline Container -->
+            <div class="relative max-w-4xl mx-auto px-2">
+                <!-- Vertical Line -->
+                <div class="absolute left-4 sm:left-1/2 transform sm:-translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-sky-200 via-sky-400 to-sky-200 rounded-full"></div>
+
+                <!-- Timeline Item 1: High School M.4-6 -->
+                <div class="relative mb-8 sm:mb-10 group">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center">
+                        <!-- Content Box Left / Right Desktop -->
+                        <div class="w-full sm:w-1/2 sm:pr-8 pl-10 sm:pl-0 sm:text-right">
+                            <div class="glass-card rounded-2xl p-5 shadow-sm border-l-4 border-l-sky-500 hover:shadow-md transition-shadow">
+                                <span class="inline-block px-3 py-1 text-xs font-semibold bg-sky-500 text-white rounded-full mb-2">
+                                    มัธยมศึกษาปีที่ 4 - 6
+                                </span>
+                                <h3 class="font-heading font-bold text-lg text-slate-800">โรงเรียนเลยพิทยาคม</h3>
+                                <p class="text-sm text-sky-600 font-medium mt-0.5">แผนการเรียน: วิทยาศาสตร์ - คณิตศาสตร์</p>
+                                <p class="text-xs text-slate-500 mt-2 leading-relaxed">
+                                    ศึกษาเน้นหนักด้านทักษะกระบวนการทางวิทยาศาสตร์ คณิตศาสตร์ และเทคโนโลยี พร้อมฝึกฝนภาวะผู้นำและการทำงานร่วมกับผู้อื่น
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Center Node -->
+                        <div class="absolute left-2 sm:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-sky-500 border-4 border-white shadow flex items-center justify-center text-white text-xs">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <div class="hidden sm:block w-1/2 sm:pl-8"></div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2: Junior High M.1-3 -->
+                <div class="relative mb-8 sm:mb-10 group">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center">
+                        <div class="hidden sm:block w-1/2 sm:pr-8"></div>
+                        <!-- Center Node -->
+                        <div class="absolute left-2 sm:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-sky-400 border-4 border-white shadow flex items-center justify-center text-white text-xs">
+                            <i class="fa-solid fa-school"></i>
+                        </div>
+                        <!-- Content Box -->
+                        <div class="w-full sm:w-1/2 pl-10 sm:pl-8">
+                            <div class="glass-card rounded-2xl p-5 shadow-sm border-l-4 border-l-sky-400 hover:shadow-md transition-shadow">
+                                <span class="inline-block px-3 py-1 text-xs font-semibold bg-sky-100 text-sky-700 rounded-full mb-2">
+                                    มัธยมศึกษาปีที่ 1 - 3
+                                </span>
+                                <h3 class="font-heading font-bold text-lg text-slate-800">โรงเรียนบ้านกกดู่</h3>
+                                <p class="text-xs text-slate-500 mt-2 leading-relaxed">
+                                    ศึกษาระดับมัธยมศึกษาตอนต้น สะสมพื้นฐานวิชาการและร่วมกิจกรรมส่งเสริมทักษะภาษาและการเขียน
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3: Primary School P.1-6 -->
+                <div class="relative mb-8 sm:mb-10 group">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center">
+                        <div class="w-full sm:w-1/2 sm:pr-8 pl-10 sm:pl-0 sm:text-right">
+                            <div class="glass-card rounded-2xl p-5 shadow-sm border-l-4 border-l-sky-300 hover:shadow-md transition-shadow">
+                                <span class="inline-block px-3 py-1 text-xs font-semibold bg-sky-100 text-sky-700 rounded-full mb-2">
+                                    ประถมศึกษาปีที่ 1 - 6
+                                </span>
+                                <h3 class="font-heading font-bold text-lg text-slate-800">โรงเรียนบ้านกกดู่</h3>
+                                <p class="text-xs text-slate-500 mt-2 leading-relaxed">
+                                    ศึกษาระดับประถมศึกษา ปลูกฝังระเบียบวินัย ทักษะการคัดลายมือ และกิจกรรมสร้างสรรค์
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Center Node -->
+                        <div class="absolute left-2 sm:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-sky-300 border-4 border-white shadow flex items-center justify-center text-white text-xs">
+                            <i class="fa-solid fa-book-open"></i>
+                        </div>
+                        <div class="hidden sm:block w-1/2 sm:pl-8"></div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 4: Kindergarten 1-3 -->
+                <div class="relative group">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center">
+                        <div class="hidden sm:block w-1/2 sm:pr-8"></div>
+                        <!-- Center Node -->
+                        <div class="absolute left-2 sm:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-sky-200 border-4 border-white shadow flex items-center justify-center text-sky-600 text-xs">
+                            <i class="fa-solid fa-child"></i>
+                        </div>
+                        <!-- Content Box -->
+                        <div class="w-full sm:w-1/2 pl-10 sm:pl-8">
+                            <div class="glass-card rounded-2xl p-5 shadow-sm border-l-4 border-l-sky-200 hover:shadow-md transition-shadow">
+                                <span class="inline-block px-3 py-1 text-xs font-semibold bg-sky-50 text-sky-600 rounded-full mb-2">
+                                    อนุบาลศึกษาปีที่ 1 - 3
+                                </span>
+                                <h3 class="font-heading font-bold text-lg text-slate-800">โรงเรียนบ้านกกดู่</h3>
+                                <p class="text-xs text-slate-500 mt-1">เริ่มต้นวัยเรียนและการพัฒนาพัฒนาการปฐมวัย</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills & Strengths Section -->
+        <section id="skills" class="scroll-mt-24">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-xs font-semibold text-sky-600 tracking-wider uppercase bg-sky-100 px-3 py-1 rounded-full">
+                    SKILLS & CAPABILITIES
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-bold font-heading text-slate-800 mt-2">
+                    ทักษะและความสามารถพิเศษ
+                </h2>
+                <div class="w-12 h-1 bg-sky-400 mx-auto rounded-full mt-2"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Skill 1 -->
+                <div class="glass-card rounded-2xl p-6 shadow-md border hover:border-sky-300 transition-all group">
+                    <div class="w-12 h-12 rounded-2xl bg-sky-100 text-sky-600 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg text-slate-800 mb-2">มีความรับผิดชอบ</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        มุ่งมั่นในการทำงานที่ได้รับมอบหมายให้สำเร็จลุล่วงด้วยความประณีต ตรงต่อเวลา และใส่ใจรายละเอียด
+                    </p>
+                </div>
+
+                <!-- Skill 2 -->
+                <div class="glass-card rounded-2xl p-6 shadow-md border hover:border-sky-300 transition-all group">
+                    <div class="w-12 h-12 rounded-2xl bg-sky-100 text-sky-600 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-people-group"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg text-slate-800 mb-2">ทำงานร่วมกับผู้อื่น</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        ปรับตัวเข้ากับเพื่อนร่วมงานได้ดี มีทักษะการสื่อสาร รับฟังความคิดเห็น และทำงานเป็นทีมอย่างมีประสิทธิภาพ
+                    </p>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="glass-card rounded-2xl p-6 shadow-md border hover:border-sky-300 transition-all group">
+                    <div class="w-12 h-12 rounded-2xl bg-sky-100 text-sky-600 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-book-bookmark"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg text-slate-800 mb-2">ทำหนังสือเล่มเล็ก</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        มีความเชี่ยวชาญในการจัดรูปเล่มหนังสือ การเรียบเรียงเนื้อหา ออกแบบปก และจัดวางเลย์เอาต์ให้สวยงามน่าอ่าน
+                    </p>
+                </div>
+
+                <!-- Skill 4 -->
+                <div class="glass-card rounded-2xl p-6 shadow-md border hover:border-sky-300 transition-all group">
+                    <div class="w-12 h-12 rounded-2xl bg-sky-100 text-sky-600 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-pen-nib"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg text-slate-800 mb-2">คัดลายมือ</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        มีทักษะในการเขียนตัวอักษรไทยอย่างถูกต้องตามอักขรวิธี มีความประณีต สวยงาม และเป็นระเบียบเรียบร้อย
+                    </p>
+                </div>
+            </div>
+
+            <!-- Academic Focus Box -->
+            <div class="mt-8 glass-card rounded-2xl p-6 border border-sky-200 bg-gradient-to-r from-sky-50/80 via-white to-blue-50/80">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-2xl sky-btn-gradient text-white flex items-center justify-center text-2xl shrink-0 shadow-md">
+                            <i class="fa-solid fa-atom"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-heading font-bold text-lg text-slate-800">
+                                ศักยภาพด้านสายการเรียน วิทยาศาสตร์ - คณิตศาสตร์
+                            </h3>
+                            <p class="text-xs text-slate-600 mt-1">
+                                มุ่งเน้นการคิดวิเคราะห์อย่างเป็นระบบ แก้ปัญหาด้วยหลักเหตุผล พร้อมเรียนรู้ต่อยอดในระดับอุดมศึกษา
+                            </p>
+                        </div>
+                    </div>
+                    <a href="#contact" class="px-5 py-2.5 rounded-xl sky-btn-gradient text-white text-xs font-semibold shrink-0 shadow hover:opacity-95 transition-opacity">
+                        <i class="fa-solid fa-paper-plane mr-1"></i> ติดต่อสอบถามเพิ่มเติม
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Family Background Section -->
+        <section id="family" class="scroll-mt-24">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-xs font-semibold text-sky-600 tracking-wider uppercase bg-sky-100 px-3 py-1 rounded-full">
+                    FAMILY BACKGROUND
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-bold font-heading text-slate-800 mt-2">
+                    ประวัติครอบครัว
+                </h2>
+                <div class="w-12 h-1 bg-sky-400 mx-auto rounded-full mt-2"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <!-- Father Card -->
+                <div class="glass-card rounded-2xl p-6 shadow-md hover:shadow-lg transition-all border border-sky-100 flex items-start gap-4">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center text-2xl shrink-0">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <div class="space-y-1.5 flex-1">
+                        <span class="text-xs font-semibold text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded-full">บิดา (Father)</span>
+                        <h3 class="font-heading font-bold text-lg text-slate-800">นายสถิตย์ สุพรหมอินทร์</h3>
+                        <div class="text-xs text-slate-600 space-y-1 pt-1">
+                            <p><span class="text-slate-400">อายุ:</span> 52 ปี</p>
+                            <p><span class="text-slate-400">อาชีพ:</span> เกษตรกร</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mother Card -->
+                <div class="glass-card rounded-2xl p-6 shadow-md hover:shadow-lg transition-all border border-sky-100 flex items-start gap-4">
+                    <div class="w-14 h-14 rounded-2xl bg-rose-100 text-rose-500 flex items-center justify-center text-2xl shrink-0">
+                        <i class="fa-solid fa-user-nurse"></i>
+                    </div>
+                    <div class="space-y-1.5 flex-1">
+                        <span class="text-xs font-semibold text-rose-600 bg-rose-50 px-2.5 py-0.5 rounded-full">มารดา (Mother)</span>
+                        <h3 class="font-heading font-bold text-lg text-slate-800">นางลำไพ สุพรหมอินทร์</h3>
+                        <div class="text-xs text-slate-600 space-y-1 pt-1">
+                            <p><span class="text-slate-400">อายุ:</span> 50 ปี</p>
+                            <p><span class="text-slate-400">อาชีพ:</span> เกษตรกร</p>
+                            <p class="flex items-center gap-2 pt-1">
+                                <span class="text-slate-400">เบอร์โทรศัพท์:</span> 
+                                <a href="tel:0990146054" class="font-semibold text-sky-600 hover:underline">099-014-6054</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Information Section -->
+        <section id="contact" class="scroll-mt-24">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-xs font-semibold text-sky-600 tracking-wider uppercase bg-sky-100 px-3 py-1 rounded-full">
+                    GET IN TOUCH
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-bold font-heading text-slate-800 mt-2">
+                    ช่องทางการติดต่อ
+                </h2>
+                <p class="text-sm text-slate-500 mt-1">สามารถติดต่ออ๋อมแอ๋มได้ผ่านช่องทางโซเชียลมีเดีย โทรศัพท์ หรืออีเมล</p>
+                <div class="w-12 h-1 bg-sky-400 mx-auto rounded-full mt-2"></div>
+            </div>
+
+            <!-- Contact Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Phone Card -->
+                <div class="glass-card rounded-2xl p-5 shadow-sm hover:shadow-md transition-all flex items-center gap-4 border border-sky-100">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <div class="overflow-hidden">
+                        <span class="text-xs text-slate-400 block">เบอร์โทรศัพท์</span>
+                        <a href="tel:0934732609" class="font-heading font-semibold text-slate-800 hover:text-sky-600 transition-colors block text-base truncate">
+                            093-473-2609
+                        </a>
+                        <button onclick="copyToClipboard('093-473-2609', 'เบอร์โทรศัพท์')" class="text-[11px] text-sky-600 font-medium hover:underline mt-0.5">
+                            <i class="fa-regular fa-copy mr-1"></i> คัดลอกเบอร์
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Email Card -->
+                <div class="glass-card rounded-2xl p-5 shadow-sm hover:shadow-md transition-all flex items-center gap-4 border border-sky-100">
+                    <div class="w-12 h-12 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div class="overflow-hidden">
+                        <span class="text-xs text-slate-400 block">อีเมล (Email)</span>
+                        <a href="mailto:CHUTIKARNN2007@GMAIL.COM" class="font-heading font-semibold text-slate-800 hover:text-sky-600 transition-colors block text-xs sm:text-sm truncate">
+                            CHUTIKARNN2007@GMAIL.COM
+                        </a>
+                        <button onclick="copyToClipboard('CHUTIKARNN2007@GMAIL.COM', 'อีเมล')" class="text-[11px] text-sky-600 font-medium hover:underline mt-0.5">
+                            <i class="fa-regular fa-copy mr-1"></i> คัดลอกอีเมล
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Facebook Card -->
+                <div class="glass-card rounded-2xl p-5 shadow-sm hover:shadow-md transition-all flex items-center gap-4 border border-sky-100">
+                    <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </div>
+                    <div class="overflow-hidden">
+                        <span class="text-xs text-slate-400 block">Facebook</span>
+                        <span class="font-heading font-semibold text-slate-800 block text-base">AOM AEM</span>
+                        <span class="text-[11px] text-slate-400 block">เฟซบุ๊กส่วนตัว</span>
+                    </div>
+                </div>
+
+                <!-- Instagram Card -->
+                <div class="glass-card rounded-2xl p-5 shadow-sm hover:shadow-md transition-all flex items-center gap-4 border border-sky-100">
+                    <div class="w-12 h-12 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                    <div class="overflow-hidden">
+                        <span class="text-xs text-slate-400 block">Instagram</span>
+                        <span class="font-heading font-semibold text-slate-800 block text-sm sm:text-base">_CHXTZ.AXMM</span>
+                        <span class="text-[11px] text-slate-400 block">อินสตาแกรม</span>
+                    </div>
+                </div>
+
+                <!-- Line Card -->
+                <div class="glass-card rounded-2xl p-5 shadow-sm hover:shadow-md transition-all flex items-center gap-4 border border-sky-100">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-500 flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-brands fa-line"></i>
+                    </div>
+                    <div class="overflow-hidden">
+                        <span class="text-xs text-slate-400 block">Line ID</span>
+                        <span class="font-heading font-semibold text-slate-800 block text-base">CHUTIKAN</span>
+                        <span class="text-[11px] text-slate-400 block">ไลน์ไอดี</span>
+                    </div>
+                </div>
+
+                <!-- Location Card -->
+                <div class="glass-card rounded-2xl p-5 shadow-sm hover:shadow-md transition-all flex items-center gap-4 border border-sky-100">
+                    <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-map-pin"></i>
+                    </div>
+                    <div class="overflow-hidden">
+                        <span class="text-xs text-slate-400 block">ภูมิลำเนา</span>
+                        <span class="font-heading font-semibold text-slate-800 block text-base">อ.เมืองเลย จ.เลย</span>
+                        <span class="text-[11px] text-slate-400 block">177 หมู่ 7 ต.กก</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Image Modal for Profile Photo -->
+    <div id="image-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4 transition-opacity duration-300">
+        <div class="relative max-w-lg w-full bg-white rounded-3xl p-4 shadow-2xl overflow-hidden animate-pulse-subtle">
+            <button id="close-modal-btn" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center justify-center text-lg z-10 transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="rounded-2xl overflow-hidden max-h-[80vh] flex items-center justify-center bg-slate-50">
+                <img id="modal-img-element" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1000&auto=format&fit=crop" 
+                     alt="รูปภาพขนาดใหญ่" 
+                     class="max-w-full max-h-[75vh] object-contain rounded-xl"
+                     onerror="this.onerror=null; this.src='https://placehold.co/800x1000/e0f2fe/0284c7?text=Chutikan+Supromin';" />
+            </div>
+            <div class="p-4 text-center">
+                <h4 class="font-heading font-semibold text-slate-800 text-base">นางสาวชุติกาญจน์ สุพรหมอินทร์ (อ๋อมแอ๋ม)</h4>
+                <p class="text-xs text-sky-600 font-medium">โรงเรียนเลยพิทยาคม • สายวิทยาศาสตร์-คณิตศาสตร์</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="glass-card bg-slate-900/90 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 border border-slate-700">
+            <div class="w-7 h-7 rounded-full bg-sky-500 flex items-center justify-center text-xs">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <span id="toast-message" class="text-xs font-medium">คัดลอกข้อมูลเรียบร้อยแล้ว</span>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-sky-200/60 bg-white/60 backdrop-blur-md py-8 mt-12">
+        <div class="max-w-6xl mx-auto px-4 text-center space-y-3">
+            <div class="flex items-center justify-center gap-2">
+                <div class="w-7 h-7 rounded-lg sky-btn-gradient flex items-center justify-center text-white text-xs font-bold">
+                    CS
+                </div>
+                <span class="font-heading font-semibold text-slate-800 text-sm">
+                    Chutikan Supromin Portfolio
+                </span>
+            </div>
+            <p class="text-xs text-slate-500">
+                © <span id="current-year">2026</span> นางสาวชุติกาญจน์ สุพรหมอินทร์ — โรงเรียนเลยพิทยาคม. All rights reserved.
+            </p>
+            <p class="text-[11px] text-sky-600 font-medium">
+                "ไม่มีความสำเร็จไหน ที่ไม่ใช้ความพยายาม"
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Update current year dynamically
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Image Modal Logic
+        const profileImg = document.getElementById('profile-img-element');
+        const imageModal = document.getElementById('image-modal');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+
+        if (profileImg) {
+            profileImg.parentElement.addEventListener('click', () => {
+                imageModal.classList.remove('hidden');
+            });
+        }
+
+        closeModalBtn.addEventListener('click', () => {
+            imageModal.classList.add('hidden');
+        });
+
+        imageModal.addEventListener('click', (e) => {
+            if (e.target === imageModal) {
+                imageModal.classList.add('hidden');
+            }
+        });
+
+        // Copy to clipboard helper function
+        function copyToClipboard(text, label) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showToast(`คัดลอก ${label} เรียบร้อยแล้ว: ${text}`);
+                }).catch(() => {
+                    fallbackCopy(text, label);
+                });
+            } else {
+                fallbackCopy(text, label);
+            }
+        }
+
+        function fallbackCopy(text, label) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showToast(`คัดลอก ${label} เรียบร้อยแล้ว: ${text}`);
+            } catch (err) {
+                showToast(`ไม่สามารถคัดลอกได้`);
+            }
+            document.body.removeChild(textArea);
+        }
+
+        // Show Toast Notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            toastMessage.textContent = message;
+            
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            }, 3000);
+        }
+
+        // Add navbar elevation on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('drop-shadow-sm');
+            } else {
+                navbar.classList.remove('drop-shadow-sm');
+            }
+        });
+    </script>
+</body>
+</html>
